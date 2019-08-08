@@ -1,0 +1,189 @@
+<div id="profile" class="page-layout simple fullwidth" fxLayout="column">
+
+    <!-- HEADER -->
+    <div class="header p-24" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+        fxLayoutAlign.gt-sm="space-between end">
+
+        <div class="user-info" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+            fxLayoutAlign.gt-sm="start center">
+            <img class="profile-image avatar huge" src="assets/images/avatars/Velazquez.jpg"
+                [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+            <div class="name" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                Charlie Adams
+            </div>
+        </div>
+
+        <!-- <div class="actions" fxLayout="row" fxLayoutAlign="end center" [@animate]="{value:'*',params:{delay:'200ms'}}">
+            <button mat-raised-button color="accent" aria-label="Follow">Follow</button>
+            <button mat-raised-button color="primary" aria-label="Send Message">Send Message</button>
+        </div> -->
+
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+        <mat-tab-group dynamicHeight="true">
+
+            <mat-tab label="Edit Profile">
+
+                <div class="p-24" fxLayout="column" fxLayoutAlign="start" fxLayout.gt-md="row">
+
+                    <!-- REACTIVE FORM EXAMPLE -->
+
+                    <form class="mat-card mat-elevation-z4 p-24 mr-24" fxLayout="column" fxLayoutAlign="start"
+                        fxFlex="1 0 auto" name="form" [formGroup]="form">
+
+                        <div class="h2 mb-24">Reactive Form Example</div>
+
+                        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>Company (disabled)</mat-label>
+                                <input matInput formControlName="company">
+                                <mat-icon matSuffix class="disabled-text">domain</mat-icon>
+                            </mat-form-field>
+
+                        </div>
+
+                        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+
+                            <mat-form-field appearance="outline" fxFlex="50" class="pr-4">
+                                <mat-label>First name</mat-label>
+                                <input matInput formControlName="firstName" required>
+                                <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
+                                <mat-error>First Name is required!</mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" fxFlex="50" class="pl-4">
+                                <mat-label>Last name</mat-label>
+                                <input matInput formControlName="lastName" required>
+                                <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
+                                <mat-error>Last Name is required!</mat-error>
+                            </mat-form-field>
+
+                        </div>
+
+                        <div fxLayout="row" fxLayoutAlign="start start">
+                            <mat-form-field appearance="outline" fxFlex>
+                                <mat-label>Email</mat-label>
+                                <mat-icon matSuffix class="secondary-text">email</mat-icon>
+                                <input name="email" formControlName="email" matInput type="email">
+                            </mat-form-field>
+                        </div>
+
+                        <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto">
+
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>Address</mat-label>
+                                <textarea matInput formControlName="address" required>
+                                            1600 Amphitheatre Pkwy
+                                        </textarea>
+                                <mat-error>Address is required!</mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>Address 2</mat-label>
+                                <textarea matInput formControlName="address2"></textarea>
+                                <mat-error>Address 2 is required!</mat-error>
+                            </mat-form-field>
+
+                        </div>
+
+                        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+
+                            <mat-form-field appearance="outline" fxFlex="33">
+                                <mat-label>City</mat-label>
+                                <input matInput formControlName="city" required>
+                                <mat-icon matSuffix class="secondary-text">location_city</mat-icon>
+                                <mat-error>City is required!</mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" fxFlex="34" class="px-8">
+                                <mat-label>State</mat-label>
+                                <input matInput formControlName="state" required>
+                                <mat-icon matSuffix class="secondary-text">location_city</mat-icon>
+                                <mat-error>State is required!</mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" fxFlex="33">
+                                <mat-label>Postal Code</mat-label>
+                                <input matInput #postalCode value="94043" formControlName="postalCode" maxlength="5"
+                                    required>
+                                <mat-icon matSuffix class="secondary-text">markunread_mailbox</mat-icon>
+                                <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+                                <mat-error>Postal Code is required!</mat-error>
+                            </mat-form-field>
+
+                        </div>
+
+                        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>Country</mat-label>
+                                <mat-select formControlName="country" required>
+                                    <mat-option [value]="'United States of America'">
+                                        United States of America
+                                    </mat-option>
+                                    <mat-option [value]="'United Kingdom'">
+                                        United Kingdom
+                                    </mat-option>
+                                    <mat-option [value]="'Russia'">
+                                        Russia
+                                    </mat-option>
+                                    <mat-option [value]="'China'">
+                                        China
+                                    </mat-option>
+                                    <mat-option [value]="'Japan'">
+                                        Japan
+                                    </mat-option>
+                                    <mat-option [value]="'Turkey'">
+                                        Turkey
+                                    </mat-option>
+                                </mat-select>
+                                <mat-icon matSuffix class="secondary-text">outlined_flag</mat-icon>
+                                <mat-error>Country is required!</mat-error>
+                            </mat-form-field>
+
+                        </div>
+                        
+                        <div fxLayout="row" fxLayoutAlign="end center" fxFlex="1 0 auto">
+                            <button mat-raised-button type="button" color="accent">
+                                Update
+                            </button>
+                        </div>
+
+                    </form>
+
+                    <!-- / REACTIVE FORM EXAMPLE -->
+
+                    <!-- <div class="mat-card form-errors-model p-24 mat-elevation-z4">
+                        <div class="h2 mb-24">Reactive Form Model</div>
+                        <pre><code>{{form.getRawValue() | json}}</code></pre>
+                    </div> -->
+
+                </div>
+
+
+            </mat-tab>
+
+            <mat-tab label="About">
+
+            </mat-tab>
+
+            <mat-tab label="Photos & Videos">
+
+            </mat-tab>
+
+        </mat-tab-group>
+
+
+
+
+
+
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>
